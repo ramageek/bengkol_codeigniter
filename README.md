@@ -1,2 +1,2 @@
-# bengkol_codeigniter
+# Bengkol | Bengkel Online
 Versi terbaru dari bengkel online
