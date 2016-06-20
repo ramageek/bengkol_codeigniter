@@ -9,6 +9,7 @@ member
 	nama			varchar (100)
 	email			varchar (150)
 	password		varchar (50)
+	avatar			varchar (100)
 	keterangan		text
 	terdaftar		timestamp
 
@@ -22,6 +23,7 @@ bengkel
 	jalan			varchar (100)
 	nomor			varchar (50)
 	telepon			varchar (100)
+	varchar			varchar (100)
 	keterangan		text
 	latitude		varchar (100)
 	longitute		varchar (100)
