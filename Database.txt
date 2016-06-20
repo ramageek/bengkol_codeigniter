@@ -1,0 +1,35 @@
+kategori
+	id_kategori		tinyint (2)
+	nama			varchar (100)
+	keterangan		text
+
+member
+	id_member		tinyint	(2)
+	id_kategori		tinyint	(2)
+	nama			varchar (100)
+	email			varchar (150)
+	password		varchar (50)
+	keterangan		text
+	terdaftar		timestamp
+
+bengkel
+	id_bengkel		tinyint	(2)
+	id_member		tinyint	(2)
+	nama			varchar (100)
+	provinsi		varchar (100)
+	kota_kabupaten	varchar (100)
+	kecamatan		varchar (100)
+	jalan			varchar (100)
+	nomor			varchar (50)
+	telepon			varchar (100)
+	keterangan		text
+	latitude		varchar (100)
+	longitute		varchar (100)
+
+jam_kerja
+	id_jam_kerja	tinyint	(2)
+	id_bengkel		tinyint	(2)
+	hari_buka		varchar (11)
+	hari_tutup		varchar (11)
+	jam_buka		time
+	jam_tutup		time
