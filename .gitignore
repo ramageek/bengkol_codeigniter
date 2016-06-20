@@ -1,5 +1,5 @@
 .DS_Store
-Database.txt
+struktur.database
 
 app/cache/*
 !app/cache/index.html
