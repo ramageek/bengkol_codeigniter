@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Comaptible" content="IE=edge">
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
-	<title>Halaman Member</title>
-
-	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/Font-Awesome.min.css') ?>">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/AdminLTE.min.css') ?>">
-	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/skins/_all-skins.min.css') ?>">
-</head>
 <body class="hold-transition skin-green sidebar-mini">
 	<div class="wrapper">
 		<header class="main-header">
@@ -124,9 +110,4 @@
 			<strong>Copyright &copy; 2016 by <a href="https://www.ramadhani.me">Qisthi Ramadhani</a></strong>. All right reserved
 		</footer>
 	</div>
-
-	<script src="<?= base_url('assets/js/jquery-2.2.4.min.js') ?>"></script>
-	<script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
-	<script src="<?= base_url('assets/js/AdminLTE.min.js') ?>"></script>
 </body>
-</html>
