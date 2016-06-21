@@ -9,17 +9,17 @@
 
 			<form action="#" method="POST">
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" placeholder="Email">
+					<input type="email" class="form-control" placeholder="Email" required>
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 
 				<div class="form-group has-feedback">
-					<input type="password" class="form-control" placeholder="Password">
+					<input type="password" class="form-control" placeholder="Password" required>
 					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 				</div>
 
 				<div class="form-group">
-					<input type="text" name="submit" value="Submit" class="btn btn-primary btn-block btn-flat">
+					<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-block btn-flat">
 				</div>
 			</form>
 

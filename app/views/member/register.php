@@ -31,7 +31,7 @@
 						<button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
 					</div>
 					<div class="col-xs-6">
-						<a href="#" class="btn btn-danger btn-block btn-flat">Kembali Login</a>
+						<a href="<?= base_url('/member/login') ?>" class="btn btn-danger btn-block btn-flat">Kembali Login</a>
 					</div>
 				</div>
 			</form>
