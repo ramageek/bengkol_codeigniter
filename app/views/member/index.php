@@ -15,7 +15,7 @@
 <body class="hold-transition skin-green sidebar-mini">
 	<div class="wrapper">
 		<header class="main-header">
-			<a href="<?= base_url() ?>" class="logo">
+			<a href="<?= base_url('member') ?>" class="logo">
 				<span class="logo-mini"><b>B</b>OL</span>
 				<span class="logo-lg"><b>Bengk</b>OL</span>
 			</a>
@@ -32,6 +32,11 @@
 								<i class="fa fa-bell-o"></i>
 							</a>
 						</li>
+						<li class="dropdown notifications-menu">
+							<form action="#" class="navbar-form" role="search">
+								<input type="text" class="form-control" id="navbar-search-input" placeholder="Search" style="width:210px">
+							</form>
+						</li>
 					</ul>
 				</div>
 			</nav>
@@ -45,19 +50,22 @@
 					</div>
 
 					<div class="pull-left info">
-						<p>Membership</p>
+						<p><a href="#">Member</a></p>
 						<a href="#"><i style="font-weight:bold;color:#ff9999;">Logout</i></a>
 					</div>
 				</div>
+
+				<ul class="sidebar-menu">
+					<li class="header">Main Navigation</li>
+					<li class="active"><a href="#"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+					<li><a href="#"><i class="fa fa-car"></i><span>Bengkel</span></a></li>
+				</ul>
 			</section>
 		</aside>
 
 		<div class="content-wrapper">
 			<section class="content-header">
 				<h1>Dashboard</h1>
-				<ol class="breadcrumb">
-					<li class="active"><i class="fa fa-dashboard"></i> Dasboard</li>
-				</ol>
 			</section>
 
 			<section class="content">
