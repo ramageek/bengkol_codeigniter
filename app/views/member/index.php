@@ -13,15 +13,23 @@
 
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
-						<li class="dropdown notifications-menu">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<li class="dropdown notifications-menu<?php if($this->session->flashdata('loggedIn')): echo ' open';endif; ?>">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="<?php if($this->session->flashdata('loggedIn')): echo 'true';else:echo 'false';endif; ?>">
 								<i class="fa fa-bell-o"></i>
+								<span class="label label-warning"><?php if($this->session->flashdata('loggedIn')): echo '1';else:echo '0';endif; ?></span>
 							</a>
-						</li>
-						<li class="dropdown notifications-menu">
-							<form action="#" class="navbar-form" role="search">
-								<input type="text" class="form-control" id="navbar-search-input" placeholder="Search" style="width:210px">
-							</form>
+
+							<ul class="dropdown-menu">
+								<?php if($this->session->flashdata('loggedIn')): ?>
+								<li>
+									<ul class="menu">
+										<li id="myAlert">
+											<a href="" class="closebutton"><i class="fa fa-check text-green" style="text-align:center;"></i><?= $this->session->flashdata('loggedIn') ?></a>
+										</li>
+									</ul>
+								</li>
+								<?php endif; ?>
+							</ul>
 						</li>
 					</ul>
 				</div>
@@ -30,6 +38,14 @@
 
 		<aside class="main-sidebar">
 			<section class="sidebar">
+				<form action="#" method="get" class="sidebar-form">
+					<div class="input-group">
+						<input type="text" name="q" class="form-control" placeholder="Search...">
+						<span class="input-group-btn">
+							<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+						</span>
+					</div>
+				</form>
 				<div class="user-panel">
 					<div class="pull-left image">
 						<img src="<?= base_url('assets/images/default.svg') ?>" alt="" class="img-circle" alt="User Image">
@@ -37,7 +53,7 @@
 
 					<div class="pull-left info">
 						<p><a href="#">Member</a></p>
-						<a href="#"><i style="font-weight:bold;color:#ff9999;">Logout</i></a>
+						<a href="<?= base_url('member/logout') ?>"><i style="font-weight:bold;color:#ff9999;">Logout</i></a>
 					</div>
 				</div>
 

@@ -1,28 +1,43 @@
 <body class="hold-transition login-page">
-	<div class="login-box">
+	<?php
+		if ($this->session->userdata('loggedin')) {
+			$this->session->set_flashdata('loggedIn','Anda sudah login, silakan logout dulu.');
+			redirect(base_url('member'));
+		};
+		if($this->session->flashdata('registered')) :
+	?>
+		<div class="alert alert-dismissable alert-success" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('registered') ?></div>
+	<?php elseif($this->session->flashdata('unregistered')) : ?>
+		<div class="alert alert-dismissable alert-danger" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('unregistered') ?></div>
+	<?php elseif($this->session->flashdata('noaccess')) : ?>
+		<div class="alert alert-dismissable alert-danger" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('noaccess') ?></div>
+	<?php
+		endif;
+		echo validation_errors('<div class="alert alert-danger" style="text-align:center;margin-bottom:0px;">','</div>');
+	?>
+	<div class="login-box" style="margin-top:10%;margin-bottom:10%;">
 		<div class="login-logo">
-			<a href="<?= base_url() ?>">Login Bengk<strong>OL</strong></a>
+			<a href="<?= base_url() ?>">Bengk<strong>OL</strong></a>
 		</div>
 
 		<div class="login-box-body">
 			<p class="login-box-msg">Start your session!</p>
 
-			<form action="#" method="POST">
+			<?= form_open() ?>
 				<div class="form-group has-feedback">
-					<input type="email" class="form-control" placeholder="Email" required>
+					<?php $data = array('type'=>'email','class'=>'form-control','placeholder'=>'Email','name'=>'email','required'=>''); echo form_input($data); ?>
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 
 				<div class="form-group has-feedback">
-					<input type="password" class="form-control" placeholder="Password" required>
+					<?php $data = array('class'=>'form-control','placeholder'=>'Password','name'=>'password','required'=>''); echo form_password($data); ?>
 					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 				</div>
 
 				<div class="form-group">
-					<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-block btn-flat">
+					<?php $data = array('class'=>'btn btn-primary btn-block btn-flat','value'=>'Submit'); echo form_submit($data); ?>
 				</div>
-			</form>
-
+			<?= form_close() ?>	
 			<div style="text-align:center">
 				<a href="<?= base_url('member/register') ?>">Register new membership</a>
 			</div>
