@@ -15,6 +15,7 @@ class Member extends CI_Controller {
 			redirect(base_url('member/login'));
 		}
 
+		$data['mainContent'] = 'member/member';
 		$data['titletag'] = "dasboard member";
 
 		$this->load->view('backend-layouts/head',$data);
