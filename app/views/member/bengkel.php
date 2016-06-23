@@ -3,7 +3,7 @@
 						<div class="box box-success">
 							<div class="box-header">
 								<h3 class="box-title">Daftar Bengkel</h3>
-								<h3 class="box-title pull-right"><a href="#" class="btn btn-danger btn-flat btn-xs">Tambah Bengkel</a></h3>
+								<h3 class="box-title pull-right" style="height:18px;"><a href="#" class="btn btn-danger btn-flat btn-xs" style="border-top:0px;border-bottom:0px;padding:0px 5px;">Tambah Bengkel</a></h3>
 							</div>
 							<div class="box-body no-padding">
 								<table class="table table-condensed">

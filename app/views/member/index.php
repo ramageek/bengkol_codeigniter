@@ -38,6 +38,7 @@
 
 		<aside class="main-sidebar">
 			<section class="sidebar">
+				<?php if($titletag == 'bengkel member') : ?>
 				<form action="#" method="get" class="sidebar-form">
 					<div class="input-group">
 						<input type="text" name="q" class="form-control" placeholder="Search...">
@@ -46,13 +47,14 @@
 						</span>
 					</div>
 				</form>
+				<?php endif; ?>
 				<div class="user-panel">
 					<div class="pull-left image">
-						<img src="<?= base_url('assets/images/default.svg') ?>" alt="" class="img-circle" alt="User Image">
+						<img src="<?= base_url('assets/images/default.svg') ?>" class="img-circle" alt="User Image">
 					</div>
 
 					<div class="pull-left info">
-						<p><a href="#">Member</a></p>
+						<p><a href="<?= base_url('member/edit-member') ?>">Member</a></p>
 						<a href="<?= base_url('member/logout') ?>"><i style="font-weight:bold;color:#ff9999;">Logout</i></a>
 					</div>
 				</div>

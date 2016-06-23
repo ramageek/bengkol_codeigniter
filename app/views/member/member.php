@@ -40,7 +40,7 @@
 										<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
 									</tr>
 									<tr>
-										<th colspan="4"><a href="<?= base_url('member/bengkel') ?>" class="btn btn-block btn-default btn-flat btn-xs">Tampilkan Semua</a></th>
+										<th colspan="4"><a href="<?= base_url('member/bengkel') ?>" class="btn btn-block btn-primary btn-flat btn-xs">Tampilkan Semua</a></th>
 									</tr>
 								</table>
 							</div>

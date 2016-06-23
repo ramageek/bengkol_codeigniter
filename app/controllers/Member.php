@@ -38,6 +38,21 @@ class Member extends CI_Controller {
 		$this->load->view('backend-layouts/foot');
 	}
 
+	public function editMember(){
+		if ($this->session->userdata('loggedin') == FALSE) {
+			$this->session->set_flashdata('noaccess','Silakan login terlebih dahulu!');
+
+			redirect(base_url('member/login'));
+		}
+
+		$data['mainContent'] = 'member/editMember';
+		$data['titletag'] = 'edit member';
+
+		$this->load->view('backend-layouts/head',$data);
+		$this->load->view('member/index',$data);
+		$this->load->view('backend-layouts/foot');
+	}
+
 	public function register() {
 		$input = array(
 			array(
