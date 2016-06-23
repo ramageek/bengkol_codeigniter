@@ -1,5 +1,5 @@
 				<div class="row">
-					<div class="col-md-2">
+					<div class="col-md-3">
 						<div class="box box-success">
 							<div class="box-header with-border">
 								<h3 class="box-title">Data Member</h3>
@@ -20,7 +20,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-10">
+					<div class="col-md-9">
 						<div class="box box-success">
 							<div class="box-header">
 								<h3 class="box-title">Daftar Bengkel</h3>
@@ -38,7 +38,9 @@
 										<td>Desa Setren RT 25/09, Kec. Bendo, Kab. Magetan</td>
 										<td>+6285785773484</td>
 										<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-										<td><a href="#" class="btn btn-info" role="button">Edit</a></td>
+									</tr>
+									<tr>
+										<th colspan="4"><a href="<?= base_url('member/bengkel') ?>" class="btn btn-block btn-default btn-flat btn-xs">Tampilkan Semua</a></th>
 									</tr>
 								</table>
 							</div>
