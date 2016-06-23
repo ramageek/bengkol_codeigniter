@@ -16,10 +16,25 @@ class Member extends CI_Controller {
 		}
 
 		$data['mainContent'] = 'member/member';
-		$data['titletag'] = "dasboard member";
+		$data['titletag'] = 'dasboard member';
 
 		$this->load->view('backend-layouts/head',$data);
 		$this->load->view('member/index');
+		$this->load->view('backend-layouts/foot');
+	}
+
+	public function bengkel() {
+		if ($this->session->userdata('loggedin') == FALSE) {
+			$this->session->set_flashdata('noaccess','Silakan login terlebih dahulu!');
+
+			redirect(base_url('member/login'));
+		}
+
+		$data['mainContent'] = 'member/bengkel';
+		$data['titletag'] = 'bengkel member';
+
+		$this->load->view('backend-layouts/head',$data);
+		$this->load->view('member/index',$data);
 		$this->load->view('backend-layouts/foot');
 	}
 

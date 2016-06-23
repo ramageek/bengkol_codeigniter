@@ -59,15 +59,15 @@
 
 				<ul class="sidebar-menu">
 					<li class="header">Main Navigation</li>
-					<li class="active"><a href="<?= base_url('member') ?>"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
-					<li><a href="#"><i class="fa fa-car"></i><span>Bengkel</span></a></li>
+					<li <?php if($titletag == 'dasboard member'):echo 'class="active"';endif; ?>><a href="<?= base_url('member') ?>"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+					<li <?php if($titletag == 'bengkel member'):echo 'class="active"';endif; ?>><a href="<?= base_url('member/bengkel')?>"><i class="fa fa-car"></i><span>Bengkel</span></a></li>
 				</ul>
 			</section>
 		</aside>
 
 		<div class="content-wrapper">
 			<section class="content-header">
-				<h1>Dashboard</h1>
+				<h1><?= ucwords($titletag) ?></h1>
 			</section>
 
 			<section class="content">
