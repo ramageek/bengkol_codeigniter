@@ -18,9 +18,8 @@
 								<i class="fa fa-bell-o"></i>
 								<span class="label label-warning"><?php if($this->session->flashdata('loggedIn')): echo '1';else:echo '0';endif; ?></span>
 							</a>
-
+							<?php if($this->session->flashdata('loggedIn')): ?>
 							<ul class="dropdown-menu">
-								<?php if($this->session->flashdata('loggedIn')): ?>
 								<li>
 									<ul class="menu">
 										<li id="myAlert">
@@ -28,8 +27,8 @@
 										</li>
 									</ul>
 								</li>
-								<?php endif; ?>
 							</ul>
+							<?php endif; ?>	
 						</li>
 					</ul>
 				</div>
@@ -38,7 +37,7 @@
 
 		<aside class="main-sidebar">
 			<section class="sidebar">
-				<?php if($titletag == 'bengkel member') : ?>
+				<?php if($titletag == 'bengkel member') : ?>	
 				<form action="#" method="get" class="sidebar-form">
 					<div class="input-group">
 						<input type="text" name="q" class="form-control" placeholder="Search...">
@@ -47,7 +46,7 @@
 						</span>
 					</div>
 				</form>
-				<?php endif; ?>
+				<?php endif; ?>	
 				<div class="user-panel">
 					<div class="pull-left image">
 						<img src="<?= base_url('assets/images/default.svg') ?>" class="img-circle" alt="User Image">
@@ -64,6 +63,7 @@
 					<li <?php if($titletag == 'dasboard member'):echo 'class="active"';endif; ?>><a href="<?= base_url('member') ?>"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
 					<li <?php if($titletag == 'bengkel member'):echo 'class="active"';endif; ?>><a href="<?= base_url('member/bengkel')?>"><i class="fa fa-car"></i><span>Bengkel</span></a></li>
 				</ul>
+
 			</section>
 		</aside>
 

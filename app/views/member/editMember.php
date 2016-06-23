@@ -32,36 +32,52 @@
 
 					<div class="col-md-8">
 						<div class="box box-success">
-							<form class="form-horizontal" method="POST">
+							<?php $data = array('class'=>'form-horizontal'); echo form_open_multipart('',$data); ?>
 								<div class="box-header with-border">
 									<h3 class="box-title">Update Data Member</h3>
-									<h3 class="box-title pull-right" style="height:18px;"><button type="submit" class="btn btn-danger btn-flat btn-xs" style="border-top:0px;border-bottom:0px;padding:0px 5px;">Submit</button></h3>
+									<h3 class="box-title pull-right" style="height:18px;">
+										<?php $data=array('class'=>'btn btn-danger btn-flat btn-xs','style'=>'border-top:0px;border-bottom:0px;padding:0px 5px;','value'=>'Submit');echo form_submit($data); ?>
+									</h3>
 								</div>
 
 								<div class="box-body">
 									<div class="form-group">
-										<label for="nama" class="col-sm-2 control-label">Nama</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control" placeholder="Nama Lengkap">
+										<label for="nama" class="col-sm-3 control-label">Nama</label>
+										<div class="col-sm-9">
+											<?php $data=array('class'=>'form-control','id'=>'nama','placeholder'=>'Nama Lengkap','name'=>'nama');echo form_input($data); ?>
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="email" class="col-sm-2 control-label">Email</label>
-										<div class="col-sm-10"><input type="email" class="form-control" placeholder="Email"></div>
+										<label for="email" class="col-sm-3 control-label">Email</label>
+										<div class="col-sm-9">
+											<?php $data=array('type'=>'email','class'=>'form-control','id'=>'email','placeholder'=>'Email','name'=>'email','required'=>'');echo form_input($data); ?>
+										</div>
 									</div>
 									<div class="form-group">
-										<label for="password" class="col-sm-2 control-label">Password</label>
-										<div class="col-sm-10"><input type="password" class="form-control" placeholder="Password"></div>
+										<label for="password1" class="col-sm-3 control-label">Password</label>
+										<div class="col-sm-9">
+											<?php $data=array('class'=>'form-control','id'=>'password1','placeholder'=>'Masukkan password','name'=>'password1','required'=>'');echo form_password($data); ?>
+										</div>
 									</div>
 									<div class="form-group">
-										<label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
-										<div class="col-sm-10"><textarea name="keterangan" rows="3" class="form-control" placeholder="Tambahkan keterangan tambahan"></textarea></div>
+										<label for="password2" class="col-sm-3 control-label">Konfirmasi Password</label>
+										<div class="col-sm-9">
+											<?php $data=array('class'=>'form-control','id'=>'password2','placeholder'=>'Konfirmasi password','name'=>'password2');echo form_password($data); ?>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="keterangan" class="col-sm-3 control-label">Keterangan</label>
+										<div class="col-sm-9">
+											<?php $data=array('class'=>'form-control','id'=>'keterangan','placeholder'=>'Berikan beberapa keterangan tambahan','name'=>'keterangan','rows'=>'3');echo form_textarea($data); ?>
+										</div>
 									</div>
 									<div class="form-group" style="margin-bottom:0px">
-										<label for="avatar" class="col-sm-2 control-label">Avatar</label>
-										<div class="col-sm-10"><input type="file" style="padding:6px 12px;padding-left:0px;"></div>
+										<label for="avatar" class="col-sm-3 control-label">Avatar</label>
+										<div class="col-sm-9">
+											<?php $data=array('class'=>'upload','name'=>'avatar','style'=>'padding:6px 12px;padding-left:0px;');echo form_upload($data); ?>
+										</div>
 									</div>
-									<div class="form-group" style="margin-bottom:0px">
+									<!-- <div class="form-group" style="margin-bottom:0px">
 										<div class="col-sm-5">
 											<img src="<?= base_url('assets/images') ?>/default.svg" class="img-responsive profile-user-img pull-right" style="height:127px">
 										</div>
@@ -71,7 +87,7 @@
 										<div class="col-sm-5">
 											<img src="<?= base_url('assets/images') ?>/default.svg" class="img-responsive profile-user-img pull-left" style="height:127px">
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</form>
 						</div>

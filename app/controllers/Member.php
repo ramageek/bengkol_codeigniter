@@ -45,12 +45,42 @@ class Member extends CI_Controller {
 			redirect(base_url('member/login'));
 		}
 
-		$data['mainContent'] = 'member/editMember';
-		$data['titletag'] = 'edit member';
+		$input = array(
+			array(
+				'field'=>'nama',
+				'rules'=>'trim|max_length[100]|min_length[3]'
+			),
+			array(
+				'field'=>'email',
+				'rules'=>'trim|max_length[150]|min_length[5]|required'
+			),
+			array(
+				'field'=>'password1',
+				'rules'=>'trim|max_length[50]|min_length[5]|required'
+			),
+			array(
+				'field'=>'password2',
+				'rules'=>'trim|max_length[50]|min_length[5]|matches[password1]'
+			),
+			array(
+				'field'=>'keterangan',
+				'rules'=>'trim'
+			)
+		);
 
-		$this->load->view('backend-layouts/head',$data);
-		$this->load->view('member/index',$data);
-		$this->load->view('backend-layouts/foot');
+		$this->form_validation->set_rules($input);
+
+		if ($this->form_validation->run() == FALSE) {
+			$data['mainContent'] = 'member/editMember';
+			$data['titletag'] = 'edit member';
+
+			$this->load->view('backend-layouts/head',$data);
+			$this->load->view('member/index',$data);
+			$this->load->view('backend-layouts/foot');
+		} else {			
+			echo print_r($_POST).'<br/>';
+			echo print_r($_FILES['avatar']);
+		}
 	}
 
 	public function register() {
