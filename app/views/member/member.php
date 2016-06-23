@@ -5,7 +5,7 @@
 								<h3 class="box-title">Data Member</h3>
 							</div>
 							<div class="box-body">
-								<i class="fa fa-home"></i> 
+								<i class="fa fa-user"></i> 
 								<strong>Nama</strong>
 								<p>Qisthi Ramadhani</p>
 								<i class="fa fa-envelope"></i> 

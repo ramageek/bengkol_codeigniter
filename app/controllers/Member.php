@@ -77,9 +77,11 @@ class Member extends CI_Controller {
 			$this->load->view('backend-layouts/head',$data);
 			$this->load->view('member/index',$data);
 			$this->load->view('backend-layouts/foot');
-		} else {			
+		} else {
+			$idMember = $this->session->userdata('userid');
 			echo print_r($_POST).'<br/>';
-			echo print_r($_FILES['avatar']);
+			echo print_r($_FILES['avatar']).'<br/>';
+			echo print_r($this->session->userdata());
 		}
 	}
 
