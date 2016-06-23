@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Member extends CI_Controller {
+class C_member extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('MemberM','mm');
+		$this->load->model('M_member','mm');
 		$this->load->helper('security');
 	}
 
@@ -15,12 +15,12 @@ class Member extends CI_Controller {
 			redirect(base_url('member/login'));
 		}
 
-		$data['mainContent'] = 'member/member';
+		$data['mainContent'] = 'vMIndex';
 		$data['titletag'] = 'dasboard member';
 
-		$this->load->view('backend-layouts/head',$data);
-		$this->load->view('member/index');
-		$this->load->view('backend-layouts/foot');
+		$this->load->view('backend-layouts/vHead',$data);
+		$this->load->view('vMLayout');
+		$this->load->view('backend-layouts/vFoot');
 	}
 
 	public function bengkel() {
@@ -30,12 +30,12 @@ class Member extends CI_Controller {
 			redirect(base_url('member/login'));
 		}
 
-		$data['mainContent'] = 'member/bengkel';
+		$data['mainContent'] = 'vMBengkel';
 		$data['titletag'] = 'bengkel member';
 
-		$this->load->view('backend-layouts/head',$data);
-		$this->load->view('member/index',$data);
-		$this->load->view('backend-layouts/foot');
+		$this->load->view('backend-layouts/vHead',$data);
+		$this->load->view('vMLayout',$data);
+		$this->load->view('backend-layouts/vFoot');
 	}
 
 	public function editMember(){
@@ -71,12 +71,12 @@ class Member extends CI_Controller {
 		$this->form_validation->set_rules($input);
 
 		if ($this->form_validation->run() == FALSE) {
-			$data['mainContent'] = 'member/editMember';
+			$data['mainContent'] = 'vMEditMember';
 			$data['titletag'] = 'edit member';
 
-			$this->load->view('backend-layouts/head',$data);
-			$this->load->view('member/index',$data);
-			$this->load->view('backend-layouts/foot');
+			$this->load->view('backend-layouts/vHead',$data);
+			$this->load->view('vMLayout',$data);
+			$this->load->view('backend-layouts/vFoot');
 		} else {
 			$idMember = $this->session->userdata('userid');
 			echo print_r($_POST).'<br/>';
@@ -114,15 +114,15 @@ class Member extends CI_Controller {
 		if ($this->form_validation->run() == FALSE) {
 			$data['titletag'] = "register member";
 
-			$this->load->view('backend-layouts/head',$data);
-			$this->load->view('member/register');
-			$this->load->view('backend-layouts/foot');
+			$this->load->view('backend-layouts/vHead',$data);
+			$this->load->view('vMRegister');
+			$this->load->view('backend-layouts/vFoot');
 		} else {
 			$email = $this->input->post('email');
 			if ($this->mm->cekMember($email)) {
 				$input = array(
 					'email'=>$this->input->post('email'),
-					'password'=>do_hash($this->input->post('password1'),'sha256')
+					'password'=>do_hash($this->input->post('password1'),'sha1')
 				);
 				if ($this->input->post('nama') != NULL) {
 					$input['nama'] = $this->input->post('nama');
@@ -164,9 +164,9 @@ class Member extends CI_Controller {
 		if ($this->form_validation->run() == FALSE) {
 			$data['titletag'] = "login member";
 
-			$this->load->view('backend-layouts/head',$data);
-			$this->load->view('member/login');
-			$this->load->view('backend-layouts/foot');
+			$this->load->view('backend-layouts/vHead',$data);
+			$this->load->view('vMLogin');
+			$this->load->view('backend-layouts/vFoot');
 		} else {
 			$email = $this->input->post('email');
 			$pass = do_hash($this->input->post('password'),'sha1');

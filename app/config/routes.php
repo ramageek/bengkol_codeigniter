@@ -5,6 +5,6 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['member'] = 'member';
-$route['member/{any}'] = 'member';
-$route['member/edit-member'] = 'member/editMember';
+$route['member'] = 'c_member';
+$route['member/edit-member'] = 'c_member/editMember';
+$route['member/(:any)'] = 'c_member/$1';

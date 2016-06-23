@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MemberM extends CI_Model {
+class M_member extends CI_Model {
 	public function cekMember($email){
 		$this->db->where('email',$email);
 		$hasil = $this->db->get('member');
