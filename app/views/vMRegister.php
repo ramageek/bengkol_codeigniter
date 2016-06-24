@@ -1,12 +1,12 @@
 <body class="hold-transition register-page">
 	<?php
 		if ($this->session->userdata('loggedin')) {
-			$this->session->set_flashdata('loggedIn','Anda sudah login, silakan logout dulu.');
+			$this->session->set_flashdata('loggedInNotif','Anda sudah login, silakan logout dulu.');
 			redirect(base_url('member'));
 		};
-		if($this->session->flashdata('already')) :
+		if($this->session->flashdata('unLoggedInNotif')) :
 	?>
-		<div class="alert alert-dismissable alert-info" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('already') ?></div>
+		<div class="alert alert-dismissable alert-info" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('unLoggedInNotif') ?></div>
 	<?php
 		endif;
 		echo validation_errors('<div class="alert alert-danger" style="text-align:center;">','</div>');

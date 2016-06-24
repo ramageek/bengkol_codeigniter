@@ -13,17 +13,17 @@
 
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
-						<li class="dropdown notifications-menu<?php if($this->session->flashdata('loggedIn')): echo ' open';endif; ?>">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="<?php if($this->session->flashdata('loggedIn')): echo 'true';else:echo 'false';endif; ?>">
+						<li class="dropdown notifications-menu<?php if($this->session->flashdata('loggedInNotif')): echo ' open';endif; ?>">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="<?php if($this->session->flashdata('loggedInNotif')): echo 'true';else:echo 'false';endif; ?>">
 								<i class="fa fa-bell-o"></i>
-								<span class="label label-warning"><?php if($this->session->flashdata('loggedIn')): echo '1';else:echo '0';endif; ?></span>
+								<span class="label label-warning"><?php if($this->session->flashdata('loggedInNotif')): echo '1';else:echo '0';endif; ?></span>
 							</a>
-							<?php if($this->session->flashdata('loggedIn')): ?>
+							<?php if($this->session->flashdata('loggedInNotif')): ?>
 							<ul class="dropdown-menu">
 								<li>
 									<ul class="menu">
 										<li id="myAlert">
-											<a href="" class="closebutton"><i class="fa fa-check text-green" style="text-align:center;"></i><?= $this->session->flashdata('loggedIn') ?></a>
+											<a href="" class="closebutton"><i class="fa fa-check text-green" style="text-align:center;"></i><?= $this->session->flashdata('loggedInNotif') ?></a>
 										</li>
 									</ul>
 								</li>

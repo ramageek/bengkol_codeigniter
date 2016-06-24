@@ -10,7 +10,7 @@ class C_member extends CI_Controller {
 
 	public function index() {
 		if ($this->session->userdata('loggedin') == FALSE) {
-			$this->session->set_flashdata('noaccess','Silakan login terlebih dahulu!');
+			$this->session->set_flashdata('unLoggedInNotif','Silakan login terlebih dahulu!');
 
 			redirect(base_url('member/login'));
 		}
@@ -25,7 +25,7 @@ class C_member extends CI_Controller {
 
 	public function bengkel() {
 		if ($this->session->userdata('loggedin') == FALSE) {
-			$this->session->set_flashdata('noaccess','Silakan login terlebih dahulu!');
+			$this->session->set_flashdata('unLoggedInNotif','Silakan login terlebih dahulu!');
 
 			redirect(base_url('member/login'));
 		}
@@ -40,7 +40,7 @@ class C_member extends CI_Controller {
 
 	public function editMember(){
 		if ($this->session->userdata('loggedin') == FALSE) {
-			$this->session->set_flashdata('noaccess','Silakan login terlebih dahulu!');
+			$this->session->set_flashdata('unLoggedInNotif','Silakan login terlebih dahulu!');
 
 			redirect(base_url('member/login'));
 		}
@@ -91,7 +91,7 @@ class C_member extends CI_Controller {
 				$config['file_name'] = $renameFile;
 				$config['overwrite'] = true;
 
-				$this->load->library('Upload',$config);
+				$this->load->library('upload',$config);
 
 				if ($this->upload->do_upload($img)) {
 					$input['avatar'] = $this->upload->data('file_name');
@@ -109,14 +109,17 @@ class C_member extends CI_Controller {
 			}
 
 			if ($this->mm->updateMember($this->session->userdata['userid'],$input)) {
-				$this->session->set_flashdata('updated','Berhasil update data');
+				$this->session->set_flashdata('loggedInNotif','Berhasil update data');
 
 				redirect(base_url('member/edit-member'));
 			} else {
-				$this->session->set_flashdata('unupdate','Data tidak di update');
+				$this->session->set_flashdata('loggedInNotif','Data tidak di update');
 
 				redirect(base_url('member/edit-member'));
 			}
+			// echo print_r($_FILES).'<br/>';
+			// echo print_r($input).'<br/>';
+			// echo print_r($config);
 		}
 	}
 
@@ -166,16 +169,16 @@ class C_member extends CI_Controller {
 					$input['keterangan'] = $this->input->post('keterangan');
 				}
 				if ($this->mm->buatMember($input)) {
-					$this->session->set_flashdata('registered','Selamat, anda telah terdaftar di BengkOL! Terima kasih telah menjadi member BengkOL.');
+					$this->session->set_flashdata('unLoggedInNotif','Selamat, anda telah terdaftar di BengkOL! Terima kasih telah menjadi member BengkOL.');
 
 					redirect(base_url('member/login'));
 				} else {
-					$this->session->$this->session->set_flashdata('unregistered','Mohon maaf, data anda tidak bisa kami proses. Silakan ulangi beberapa saat lagi.');
+					$this->session->$this->session->set_flashdata('unLoggedInNotif','Mohon maaf, data anda tidak bisa kami proses. Silakan ulangi beberapa saat lagi.');
 
 					redirect(base_url('member/login'));
 				}
 			} else {
-				$this->session->set_flashdata('already','Mohon maaf, email yang anda masukkan telah terdaftar.');
+				$this->session->set_flashdata('unLoggedInNotif','Mohon maaf, email yang anda masukkan telah terdaftar.');
 
 				redirect(base_url('member/register'));
 			}
@@ -219,11 +222,11 @@ class C_member extends CI_Controller {
 				);
 
 				$this->session->set_userdata($userdata);
-				$this->session->set_flashdata('loggedIn','Selamat datang member BengkOL.');
+				$this->session->set_flashdata('loggedInNotif','Selamat datang member BengkOL.');
 
 				redirect(base_url('member'));
 			} else {
-				$this->session->set_flashdata('unloggedIn','Mohon maaf, email dan password yang anda masukkan tidak valid.');
+				$this->session->set_flashdata('unLoggedInNotif','Mohon maaf, email dan password yang anda masukkan tidak valid.');
 
 				redirect(base_url('member/login'));
 			}
@@ -232,7 +235,7 @@ class C_member extends CI_Controller {
 
 	public function logout(){
 		if ($this->session->userdata('loggedin') == FALSE) {
-			$this->session->set_flashdata('noaccess','Silakan login terlebih dahulu!');
+			$this->session->set_flashdata('unLoggedInNotif','Silakan login terlebih dahulu!');
 
 			redirect(base_url('member/login'));
 		}

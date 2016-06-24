@@ -1,18 +1,12 @@
 <body class="hold-transition login-page">
 	<?php
 		if ($this->session->userdata('loggedin')) {
-			$this->session->set_flashdata('loggedIn','Anda sudah login, silakan logout dulu.');
+			$this->session->set_flashdata('loggedInNotif','Anda sudah login, silakan logout dulu.');
 			redirect(base_url('member'));
 		};
-		if($this->session->flashdata('registered')) :
+		if($this->session->flashdata('unLoggedInNotif')) :
 	?>
-		<div class="alert alert-dismissable alert-success" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('registered') ?></div>
-	<?php elseif($this->session->flashdata('unregistered')) : ?>
-		<div class="alert alert-dismissable alert-danger" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('unregistered') ?></div>
-	<?php elseif($this->session->flashdata('noaccess')) : ?>
-		<div class="alert alert-dismissable alert-danger" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('noaccess') ?></div>
-	<?php elseif($this->session->flashdata('unloggedIn')) : ?>
-		<div class="alert alert-dismissable alert-danger" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('unloggedIn') ?></div>
+		<div class="alert alert-dismissable alert-success" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('unLoggedInNotif') ?></div>
 	<?php
 		endif;
 		echo validation_errors('<div class="alert alert-danger" style="text-align:center;margin-bottom:0px;">','</div>');
