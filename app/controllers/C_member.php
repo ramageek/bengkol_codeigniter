@@ -80,34 +80,34 @@ class C_member extends CI_Controller {
 			$this->load->view('vMLayout',$data);
 			$this->load->view('backend-layouts/vFoot');
 		} else {
-			if (!empty($_FILES['avatar']['tmp_name'])) {
-				$namaFile = explode('.', basename($_FILES['avatar']['name']));
-				$jmlArr = count($namaFile);
-				$renameFile = strtolower("avatar-member-".$this->session->userdata['userid'].'.'.$namaFile[$jmlArr-1]);
-				$img = 'avatar';
-
-				$config['upload_path'] = '.assets/images/';
-				$config['allowed_types'] = 'jpg|jpeg|png';
-				$config['file_name'] = $renameFile;
-				$config['overwrite'] = true;
-
-				$this->load->library('upload',$config);
-
-				if ($this->upload->do_upload($img)) {
-					$input['avatar'] = $this->upload->data('file_name');
-				}
-			}
 			$input = array(
 				'email'=>$this->input->post('email'),
 				'password'=>do_hash($this->input->post('password1'),'sha1')
 			);
+
 			if ($this->input->post('nama') != NULL) {
 				$input['nama'] = $this->input->post('nama');
 			}
 			if ($this->input->post('keterangan') != NULL) {
 				$input['keterangan'] = $this->input->post('keterangan');
 			}
+			if ($_FILES['avatar'] != NULL) {
+				$namaFile = explode('.', basename($_FILES['avatar']['name']));
+				$jmlArr = count($namaFile);
+				$renameFile = strtolower("avatar-member-".$this->session->userdata['userid'].'.'.$namaFile[$jmlArr-1]);
 
+				$config['upload_path'] = './assets/images/';
+				$config['allowed_types'] = 'jpg|jpeg|png';
+				$config['file_name'] = $renameFile;
+				$config['overwrite'] = true;
+
+				$this->load->library('Upload',$config);
+
+				if ($this->upload->do_upload('avatar')) {
+					$input['avatar'] = $this->upload->data('file_name');
+				}
+			}
+			
 			if ($this->mm->updateMember($this->session->userdata['userid'],$input)) {
 				$this->session->set_flashdata('loggedInNotif','Berhasil update data');
 
@@ -117,9 +117,6 @@ class C_member extends CI_Controller {
 
 				redirect(base_url('member/edit-member'));
 			}
-			// echo print_r($_FILES).'<br/>';
-			// echo print_r($input).'<br/>';
-			// echo print_r($config);
 		}
 	}
 
