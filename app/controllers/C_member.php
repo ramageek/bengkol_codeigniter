@@ -71,6 +71,8 @@ class C_member extends CI_Controller {
 		$this->form_validation->set_rules($input);
 
 		if ($this->form_validation->run() == FALSE) {
+			$data['bMobil'] = $this->mm->jmlBengkel($this->session->userdata['userid'],1);
+			$data['bMotor'] = $this->mm->jmlBengkel($this->session->userdata['userid'],2);
 			$data['mainContent'] = 'vMEditMember';
 			$data['titletag'] = 'edit member';
 
@@ -78,10 +80,43 @@ class C_member extends CI_Controller {
 			$this->load->view('vMLayout',$data);
 			$this->load->view('backend-layouts/vFoot');
 		} else {
-			$idMember = $this->session->userdata('userid');
-			echo print_r($_POST).'<br/>';
-			echo print_r($_FILES['avatar']).'<br/>';
-			echo print_r($this->session->userdata());
+			if (!empty($_FILES['avatar']['tmp_name'])) {
+				$namaFile = explode('.', basename($_FILES['avatar']['name']));
+				$jmlArr = count($namaFile);
+				$renameFile = strtolower("avatar-member-".$this->session->userdata['userid'].'.'.$namaFile[$jmlArr-1]);
+				$img = 'avatar';
+
+				$config['upload_path'] = '.assets/images/';
+				$config['allowed_types'] = 'jpg|jpeg|png';
+				$config['file_name'] = $renameFile;
+				$config['overwrite'] = true;
+
+				$this->load->library('Upload',$config);
+
+				if ($this->upload->do_upload($img)) {
+					$input['avatar'] = $this->upload->data('file_name');
+				}
+			}
+			$input = array(
+				'email'=>$this->input->post('email'),
+				'password'=>do_hash($this->input->post('password1'),'sha1')
+			);
+			if ($this->input->post('nama') != NULL) {
+				$input['nama'] = $this->input->post('nama');
+			}
+			if ($this->input->post('keterangan') != NULL) {
+				$input['keterangan'] = $this->input->post('keterangan');
+			}
+
+			if ($this->mm->updateMember($this->session->userdata['userid'],$input)) {
+				$this->session->set_flashdata('updated','Berhasil update data');
+
+				redirect(base_url('member/edit-member'));
+			} else {
+				$this->session->set_flashdata('unupdate','Data tidak di update');
+
+				redirect(base_url('member/edit-member'));
+			}
 		}
 	}
 
@@ -176,6 +211,10 @@ class C_member extends CI_Controller {
 				$userdata = array(
 					'userid'=>$log['id_member'],
 					'nama'=>$log['nama'],
+					'email'=>$log['email'],
+					'avatar'=>$log['avatar'],
+					'keterangan'=>$log['keterangan'],
+					'terdaftar'=>$log['terdaftar'],
 					'loggedin'=>TRUE
 				);
 

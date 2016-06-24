@@ -49,11 +49,11 @@
 				<?php endif; ?>	
 				<div class="user-panel">
 					<div class="pull-left image">
-						<img src="<?= base_url('assets/images/default.svg') ?>" class="img-circle" alt="User Image">
+						<img src="<?= base_url('assets/images') ?>/<?= $this->session->userdata['avatar'] ?>" class="img-circle" alt="User Image">
 					</div>
 
 					<div class="pull-left info">
-						<p><a href="<?= base_url('member/edit-member') ?>">Member</a></p>
+						<p><a href="<?= base_url('member/edit-member') ?>"><?= $this->session->userdata['nama'] ?></a></p>
 						<a href="<?= base_url('member/logout') ?>"><i style="font-weight:bold;color:#ff9999;">Logout</i></a>
 					</div>
 				</div>

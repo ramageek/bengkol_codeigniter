@@ -7,16 +7,16 @@
 							<div class="box-body">
 								<i class="fa fa-user"></i> 
 								<strong>Nama</strong>
-								<p>Qisthi Ramadhani</p>
+								<p><?= $this->session->userdata['nama'] ?></p>
 								<i class="fa fa-envelope"></i> 
 								<strong>Email</strong>
-								<p>qisthi@ramadhani.me</p>
+								<p><?= $this->session->userdata['email'] ?></p>
 								<i class="fa fa-newspaper-o"></i> 
 								<strong>Keterangan</strong>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+								<p><?php if($this->session->userdata['keterangan'] != NULL):echo $this->session->userdata['keterangan'];else:echo '-';endif; ?></p>
 								<i class="fa fa-paper-plane"></i> 
 								<strong>Terdaftar</strong>
-								<p>Kamis, 12 Mei 2016 pukul 14:20:24</p>
+								<p><?= $this->session->userdata['terdaftar'] ?></p>
 							</div>
 						</div>
 					</div>

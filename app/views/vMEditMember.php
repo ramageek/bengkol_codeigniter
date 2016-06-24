@@ -2,30 +2,25 @@
 					<div class="col-md-4">
 						<div class="box box-success">
 							<div class="box-body box-profile">
-								<img src="<?= base_url('assets/images')?>/default.svg" class="profile-user-img img-responsive img-circle" alt="User Image">
-								<h3 class="profile-username text-center">Qisthi Ramadhani</h3>
-								<p class="text-muted text-center">Founder BengkOL</p>
+								<img src="<?= base_url('assets/images')?>/<?= $this->session->userdata['avatar'] ?>" class="profile-user-img img-responsive img-circle" alt="User Image">
+								<h3 class="profile-username text-center"><?= $this->session->userdata['nama'] ?></h3>
 
 								<ul class="list-group list-group-unbordered" style="margin-bottom:10px">
 									<li class="list-group-item">
-										<strong>Email</strong> <a class="pull-right" href="mailto:qisthi@ramadhani.me">qisthi@ramadhani.me</a>
+										<strong>Email</strong> <a class="pull-right" href="mailto:<?= $this->session->userdata['email'] ?>"><?= $this->session->userdata['email'] ?></a>
 									</li>
 									<li class="list-group-item">
-										<strong>Bengkel Mobil</strong> <a class="pull-right" href="<?= base_url('member/bengkel') ?>">3</a>
+										<strong>Bengkel Mobil</strong> <a class="pull-right" href="<?= base_url('member/bengkel') ?>"><?= $bMobil ?></a>
 									</li>
 									<li class="list-group-item">
-										<strong>Bengkel Motor</strong> <a class="pull-right" href="<?= base_url('member/bengkel') ?>">3</a>
+										<strong>Bengkel Motor</strong> <a class="pull-right" href="<?= base_url('member/bengkel') ?>"><?= $bMotor ?></a>
 									</li>
 								</ul>
 
 								<strong><i class="fa fa-newspaper-o"></i> Keterangan</strong>
-								<p class="text-muted">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, pariatur?
-								</p>
+								<p class="text-muted"><?php if($this->session->userdata['keterangan'] != NULL):echo $this->session->userdata['keterangan'];else:echo '-';endif; ?></p>
 								<strong><i class="fa fa-paper-plane"></i> Terdaftar sejak</strong>
-								<p class="text-muted">
-									Kamis, 12 Mei 2016 pukul 14:20:24
-								</p>
+								<p class="text-muted"><?= $this->session->userdata['terdaftar'] ?></p>
 							</div>
 						</div>
 					</div>

@@ -11,6 +11,8 @@
 		<div class="alert alert-dismissable alert-danger" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('unregistered') ?></div>
 	<?php elseif($this->session->flashdata('noaccess')) : ?>
 		<div class="alert alert-dismissable alert-danger" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('noaccess') ?></div>
+	<?php elseif($this->session->flashdata('unloggedIn')) : ?>
+		<div class="alert alert-dismissable alert-danger" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('unloggedIn') ?></div>
 	<?php
 		endif;
 		echo validation_errors('<div class="alert alert-danger" style="text-align:center;margin-bottom:0px;">','</div>');

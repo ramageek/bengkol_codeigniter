@@ -12,9 +12,7 @@ class M_member extends CI_Model {
 	}
 
 	public function buatMember($input){
-		$tambah = $this->db->insert('member',$input);
-
-		return $tambah;
+		return $this->db->insert('member',$input);
 	}
 
 	public function loginMember($email,$pass){
@@ -28,5 +26,18 @@ class M_member extends CI_Model {
 		} else {
 			return FALSE;
 		}
+	}
+
+	public function jmlBengkel($userid,$idkategori){
+		$this->db->where('id_member',$userid);
+		$this->db->where('id_kategori',$idkategori);
+		$this->db->from('bengkel');
+
+		return $this->db->count_all_results();
+	}
+
+	public function updateMember($id,$input){
+		$this->db->where('id_member',$id);
+		return $this->db->update('member',$input);
 	}
 }
