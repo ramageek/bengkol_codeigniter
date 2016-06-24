@@ -69,7 +69,7 @@
 									<div class="form-group" style="margin-bottom:0px">
 										<label for="avatar" class="col-sm-3 control-label">Avatar</label>
 										<div class="col-sm-9">
-											<?php $data=array('class'=>'upload','name'=>'avatar','style'=>'padding:6px 12px;padding-left:0px;');echo form_upload($data); ?>
+											<?php $data=array('class'=>'upload','id'=>'avatar','name'=>'avatar','style'=>'padding:6px 12px;padding-left:0px;');echo form_upload($data); ?>
 										</div>
 									</div>
 									<!-- <div class="form-group" style="margin-bottom:0px">

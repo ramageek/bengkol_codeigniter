@@ -5,6 +5,7 @@ class C_member extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('M_member','mm');
+		$this->load->model('M_bengkel','mb');
 		$this->load->helper('security');
 	}
 
@@ -30,7 +31,24 @@ class C_member extends CI_Controller {
 			redirect(base_url('member/login'));
 		}
 
+		$data['dataBengkel'] = $this->mb->dataBengkel($this->session->userdata('userid'));
 		$data['mainContent'] = 'vMBengkel';
+		$data['titletag'] = 'bengkel member';
+
+		$this->load->view('backend-layouts/vHead',$data);
+		$this->load->view('vMLayout',$data);
+		$this->load->view('backend-layouts/vFoot');
+	}
+
+	public function tambahBengkel() {
+		if ($this->session->userdata('loggedin') == FALSE) {
+			$this->session->set_flashdata('unLoggedInNotif','Silakan login terlebih dahulu!');
+
+			redirect(base_url('member/login'));
+		}
+
+		$data['dataBengkel'] = $this->mb->dataBengkel($this->session->userdata('userid'));
+		$data['mainContent'] = 'vMBengkelTambah';
 		$data['titletag'] = 'bengkel member';
 
 		$this->load->view('backend-layouts/vHead',$data);

@@ -11,4 +11,5 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/Font-Awesome.min.css') ?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/AdminLTE.min.css') ?>">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/skins/_all-skins.min.css') ?>">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css') ?>">
 </head>

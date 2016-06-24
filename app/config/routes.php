@@ -7,4 +7,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['member'] = 'c_member';
 $route['member/edit-member'] = 'c_member/editMember';
+$route['member/bengkel/tambah'] = 'c_member/tambahBengkel';
 $route['member/(:any)'] = 'c_member/$1';

@@ -6,7 +6,7 @@
 		};
 		if($this->session->flashdata('unLoggedInNotif')) :
 	?>
-		<div class="alert alert-dismissable alert-success" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('unLoggedInNotif') ?></div>
+		<div class="alert alert-dismissable alert-info" style="text-align:center;margin-bottom:0px;"><?= $this->session->flashdata('unLoggedInNotif') ?></div>
 	<?php
 		endif;
 		echo validation_errors('<div class="alert alert-danger" style="text-align:center;margin-bottom:0px;">','</div>');
