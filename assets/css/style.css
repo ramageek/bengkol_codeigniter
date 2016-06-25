@@ -1,15 +1,22 @@
 div.box-header.with-border.text-center.alamat.mine{
-	padding:0px;
+	padding: 0px;
 }
 div.form-group.alamat.mine{
-	margin-bottom:0px;
+	margin-bottom: 0px;
 }
 label.alamat.mine{
-	margin:0px;
+	margin: 0px;
 }
 div.col-md-9.alamat.mine{
 	padding: 0px;
 }
 div.col-md-3.alamat.mine{
 	padding: 0px;
+}
+div.form-group.mine{
+	margin-bottom: 12px;
+}
+img.img-responsive.profile-user-img#preview{
+	height:127px;
+	width:auto;
 }

@@ -36,53 +36,45 @@
 								</div>
 
 								<div class="box-body">
-									<div class="form-group">
+									<div class="form-group mine">
 										<label for="nama" class="col-sm-3 control-label">Nama</label>
 										<div class="col-sm-9">
-											<?php $data=array('class'=>'form-control','id'=>'nama','placeholder'=>'Nama Lengkap','name'=>'nama');echo form_input($data); ?>
+											<?php $data=array('class'=>'form-control','id'=>'nama','placeholder'=>'Nama Lengkap','name'=>'nama','value'=>$this->session->userdata('nama'));echo form_input($data); ?>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group mine">
 										<label for="email" class="col-sm-3 control-label">Email</label>
 										<div class="col-sm-9">
-											<?php $data=array('type'=>'email','class'=>'form-control','id'=>'email','placeholder'=>'Email','name'=>'email','required'=>'');echo form_input($data); ?>
+											<?php $data=array('type'=>'email','class'=>'form-control','id'=>'email','placeholder'=>'Email','name'=>'email','required'=>'','value'=>$this->session->userdata('email'));echo form_input($data); ?>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group mine">
 										<label for="password1" class="col-sm-3 control-label">Password</label>
 										<div class="col-sm-9">
 											<?php $data=array('class'=>'form-control','id'=>'password1','placeholder'=>'Masukkan password','name'=>'password1','required'=>'');echo form_password($data); ?>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group mine">
 										<label for="password2" class="col-sm-3 control-label">Konfirmasi Password</label>
 										<div class="col-sm-9">
 											<?php $data=array('class'=>'form-control','id'=>'password2','placeholder'=>'Konfirmasi password','name'=>'password2');echo form_password($data); ?>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group mine">
 										<label for="keterangan" class="col-sm-3 control-label">Keterangan</label>
 										<div class="col-sm-9">
-											<?php $data=array('class'=>'form-control','id'=>'keterangan','placeholder'=>'Berikan beberapa keterangan tambahan','name'=>'keterangan','rows'=>'3');echo form_textarea($data); ?>
+											<?php $data=array('class'=>'form-control','id'=>'keterangan','placeholder'=>'Berikan beberapa keterangan tambahan','name'=>'keterangan','rows'=>'3','value'=>$this->session->userdata('keterangan'));echo form_textarea($data); ?>
 										</div>
 									</div>
-									<div class="form-group" style="margin-bottom:0px">
+									<div class="form-group mine" style="margin-bottom:0px">
 										<label for="avatar" class="col-sm-3 control-label">Avatar</label>
-										<div class="col-sm-9">
+										<div class="col-sm-5">
 											<?php $data=array('class'=>'upload','id'=>'avatar','name'=>'avatar','style'=>'padding:6px 12px;padding-left:0px;');echo form_upload($data); ?>
 										</div>
+										<div class="col-sm-4">
+											<img src="<?= base_url('assets/images') ?>/<?= $this->session->userdata('avatar') ?>" class="img-responsive profile-user-img" id="preview">
+										</div>
 									</div>
-									<!-- <div class="form-group" style="margin-bottom:0px">
-										<div class="col-sm-5">
-											<img src="<?= base_url('assets/images') ?>/default.svg" class="img-responsive profile-user-img pull-right" style="height:127px">
-										</div>
-										<div class="col-sm-2 text-center">
-											<div style="margin-top:56px;"><span class="fa fa-arrow-right"></span></div>
-										</div>
-										<div class="col-sm-5">
-											<img src="<?= base_url('assets/images') ?>/default.svg" class="img-responsive profile-user-img pull-left" style="height:127px">
-										</div>
-									</div> -->
 								</div>
 							</form>
 						</div>
