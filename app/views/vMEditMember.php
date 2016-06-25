@@ -68,15 +68,15 @@
 									</div>
 									<div class="form-group mine" style="margin-bottom:0px">
 										<label for="avatar" class="col-sm-3 control-label">Avatar</label>
-										<div class="col-sm-5">
+										<div class="col-sm-6">
 											<?php $data=array('class'=>'upload','id'=>'avatar','name'=>'avatar','style'=>'padding:6px 12px;padding-left:0px;');echo form_upload($data); ?>
 										</div>
-										<div class="col-sm-4">
+										<div class="col-sm-3">
 											<img src="<?= base_url('assets/images') ?>/<?= $this->session->userdata('avatar') ?>" class="img-responsive profile-user-img" id="preview">
 										</div>
 									</div>
 								</div>
-							</form>
+							<?= form_close() ?>
 						</div>
 					</div>
 				</div>

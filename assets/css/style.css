@@ -4,19 +4,27 @@ div.box-header.with-border.text-center.alamat.mine{
 div.form-group.alamat.mine{
 	margin-bottom: 0px;
 }
+div.form-group.alamat.mine.col-md-8{
+	padding: 0px;
+}
+div.form-group.alamat.mine.col-md-4{
+	padding: 0px;
+}
 label.alamat.mine{
 	margin: 0px;
 }
-div.col-md-9.alamat.mine{
-	padding: 0px;
-}
-div.col-md-3.alamat.mine{
-	padding: 0px;
-}
 div.form-group.mine{
-	margin-bottom: 12px;
+	margin-bottom:12px;
 }
 img.img-responsive.profile-user-img#preview{
 	height:127px;
 	width:auto;
+}
+div.col-md-9#span{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+div.col-md-3#span{
+	margin-top:5px;
+	margin-bottom:5px;
 }
