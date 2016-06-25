@@ -12,8 +12,19 @@
                 <div class="box-body">
                   <div class="col-md-9">
                     <div class="form-group alamat mine">
-                      <label for="nama" class="alamat mine">Nama</label>
-                      <?php $data=array('class'=>'form-control','id'=>'nama','name'=>'nama','placeholder'=>'Nama Bengkel','required'=>'');echo form_input($data); ?>
+                      <div class="col-md-5" style="padding-left:0px;">
+                        <div class="form-group alamat mine">
+                          <label for="kategori" class="alamat mine">Kategori Bengkel</label>
+                          <select name="kategori" id="kategori" class="form-control">
+                            <option value="1">Bengkel Mobil</option>
+                            <option value="2">Bengkel Motor</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7" style="padding-right:0px;">
+                        <label for="nama" class="alamat mine">Nama</label>
+                        <?php $data=array('class'=>'form-control','id'=>'nama','name'=>'nama','placeholder'=>'Nama Bengkel','required'=>'');echo form_input($data); ?>
+                      </div>
                     </div>
 
                     <div class="form-group alamat mine">
@@ -29,7 +40,7 @@
                     <div class="form-group alamat mine">
                       <div class="col-md-6">
                         <label for="lokasi" class="alamat mine">Lokasi</label><br/>
-                        <a class="btn btn-default btn-block btn-flat mine">Set Lokasi</a>
+                        <a class="btn btn-danger btn-flat btn-xs btn-block">Set Lokasi</a>
                       </div>
                       <div class="col-md-6">
                         <label for="avatar" class="alamat mine">Avatar Bengkel</label>
@@ -62,7 +73,7 @@
                     
                     <div class="form-group alamat mine">
                       <label class="alamat mine" for="provinsi">Provinsi</label>
-                      <?php $data=array('class'=>'form-control','id'=>'provinsi','name'=>'provinsi','value'=>'Daerah Istimewa Yogyakarta','required'=>'','disabled'=>'');echo form_input($data); ?>
+                      <?php $data=array('class'=>'form-control','id'=>'provinsi','name'=>'provinsi','value'=>'Daerah Istimewa Yogyakarta','required'=>'','readonly'=>'');echo form_input($data); ?>
                     </div>
                     
                     <div class="form-group alamat mine">
@@ -92,12 +103,12 @@
                     
                     <div class="form-group alamat mine">
                       <label class="alamat mine" for="latitude">Latitude</label>
-                      <?php $data=array('class'=>'form-control','id'=>'latitude','name'=>'latitude','placeholder'=>'Belum tersedia','disabled'=>'');echo form_input($data); ?>
+                      <?php $data=array('class'=>'form-control','id'=>'latitude','name'=>'latitude','placeholder'=>'Belum tersedia','readonly'=>'','value'=>'12345');echo form_input($data); ?>
                     </div>
                     
                     <div class="form-group alamat mine">
                       <label class="alamat mine" for="longitude">Longitude</label>
-                      <?php $data=array('class'=>'form-control','id'=>'longitude','name'=>'longitude','placeholder'=>'Belum tersedia','disabled'=>'');echo form_input($data); ?>
+                      <?php $data=array('class'=>'form-control','id'=>'longitude','name'=>'longitude','placeholder'=>'Belum tersedia','readonly'=>'');echo form_input($data); ?>
                     </div>
                   </div>
                 </div>

@@ -47,13 +47,116 @@ class C_member extends CI_Controller {
 			redirect(base_url('member/login'));
 		}
 
-		$data['dataBengkel'] = $this->mb->dataBengkel($this->session->userdata('userid'));
-		$data['mainContent'] = 'vMBengkelTambah';
-		$data['titletag'] = 'bengkel member';
+		$input = array(
+			array(
+				'field'=>'kategori',
+				'rules'=>'trim|max_length[1]'
+			),
+			array(
+				'field'=>'nama',
+				'rules'=>'trim|max_length[100]'
+			),
+			array(
+				'field'=>'provinsi',
+				'rules'=>'trim|max_length[100]'
+			),
+			array(
+				'field'=>'kotakab',
+				'rules'=>'trim|max_length[100]'
+			),
+			array(
+				'field'=>'kecamatan',
+				'rules'=>'trim|max_length[100]'
+			),
+			array(
+				'field'=>'desakel',
+				'rules'=>'trim|max_length[100]'
+			),
+			array(
+				'field'=>'jalan',
+				'rules'=>'trim|max_length[100]'
+			),
+			array(
+				'field'=>'nomor',
+				'rules'=>'trim|max_length[50]'
+			),
+			array(
+				'field'=>'telepon',
+				'rules'=>'trim|max_length[100]'
+			),
+			array(
+				'field'=>'keterangan',
+				'rules'=>'trim'
+			),
+			array(
+				'field'=>'latitude',
+				'rules'=>'trim|max_length[100]'
+			),
+			array(
+				'field'=>'longitude',
+				'rules'=>'trim|max_length[100]'
+			)
+		);
 
-		$this->load->view('backend-layouts/vHead',$data);
-		$this->load->view('vMLayout',$data);
-		$this->load->view('backend-layouts/vFoot');
+		$this->form_validation->set_rules($input);
+
+		if ($this->form_validation->run() == FALSE) {
+			$data['dataBengkel'] = $this->mb->dataBengkel($this->session->userdata('userid'));
+			$data['mainContent'] = 'vMBengkelTambah';
+			$data['titletag'] = 'bengkel member';
+
+			$this->load->view('backend-layouts/vHead',$data);
+			$this->load->view('vMLayout',$data);
+			$this->load->view('backend-layouts/vFoot');
+		} else {
+			$input = array(
+				'id_kategori'=>$this->input->post('kategori'),
+				'nama'=>$this->input->post('nama'),
+				'provinsi'=>$this->input->post('provinsi'),
+				'kota_kabupaten'=>$this->input->post('kotakab'),
+				'jalan'=>$this->input->post('jalan')
+			);
+			$input['id_bengkel'] = $idBengkel = $this->mm->getIdBengkelTerakhir()+1;
+			if (!empty($this->input->post('kecamatan'))) {
+				$input['kecamatan'] = $this->input->post('kecamatan');
+			}
+			if (!empty($this->input->post('desakel'))) {
+				$input['desa_kelurahan'] = $this->input->post('desakel');
+			}
+			if (!empty($this->input->post('nomor'))) {
+				$input['nomor'] = $this->input->post('nomor');
+			}
+			if (!empty($this->input->post('telepon'))) {
+				$input['telepon'] = $this->input->post('telepon');
+			}
+			if (!empty($this->input->post('keterangan'))) {
+				$input['keterangan'] = $this->input->post('keterangan');
+			}
+			if (!empty($this->input->post('latitude'))) {
+				$input['latitude'] = $this->input->post('latitude');
+			}
+			if (!empty($this->input->post('longitude'))) {
+				$input['longitude'] = $this->input->post('longitude');
+			}
+			if ($_FILES['avatar'] != NULL) {
+				$namaFile = explode('.', basename($_FILES['avatar']['name']));
+				$jmlArr = count($namaFile);
+				$renameFile = strtolower("avatar-bengkel-".$idBengkel.'.'.$namaFile[$jmlArr-1]);
+
+				$config['upload_path'] = './assets/images/';
+				$config['allowed_types'] = 'jpg|jpeg|png';
+				$config['file_name'] = $renameFile;
+				$config['overwrite'] = true;
+
+				$this->load->library('Upload',$config);
+
+				if ($this->upload->do_upload('avatar')) {
+					$input['avatar'] = $this->upload->data('file_name');
+				}
+			}
+
+			echo print_r($input).'<br/>';
+		}
 	}
 
 	public function editMember(){
