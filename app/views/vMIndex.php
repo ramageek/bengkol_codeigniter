@@ -28,20 +28,29 @@
               <div class="box-body no-padding">
                 <table class="table table-condensed">
                   <tr>
-                    <th>Nama</th>
-                    <th style="width:30%">Alamat</th>
-                    <th>Telepon</th>
-                    <th style="width:30%">Keterangan</th>
+                    <th width="20%">Nama</th>
+                    <th width="60%">Alamat</th>
+                    <th width="20%">Ket</th>
                   </tr>
-                  <tr>
-                    <td>Bengkel Rama</td>
-                    <td>Desa Setren RT 25/09, Kec. Bendo, Kab. Magetan</td>
-                    <td>+6285785773484</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                  </tr>
-                  <tr>
-                    <th colspan="4"><a href="<?= base_url('member/bengkel') ?>" class="btn btn-block btn-primary btn-flat btn-xs">Tampilkan Semua</a></th>
-                  </tr>
+                  <?php if(!empty($dataBengkel)):foreach($dataBengkel as $dat):?>
+                    <tr>
+                      <td><a href="#"><?= $dat['nama'] ?></a></td>
+                      <td>
+                        <?php
+                        if(!empty($dat['jalan'])){echo $dat['jalan'];}if(!empty($dat['nomor'])){echo ' '.$dat['nomor'];}if (!empty($dat['desa_kelurahan'])){echo ', '.$dat['desa_kelurahan'];}if(!empty($dat['kota_kabupaten'])){echo ', '.$dat['kecamatan'];}echo ', '.$dat['kota_kabupaten'];echo ', '.$dat['provinsi'];
+                        ?>
+                      </td>
+                      <td><?php if(!empty($dat['keterangan'])):echo $dat['keterangan'];else:echo 'Tidak ada keterangan';endif; ?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                    <tr>
+                      <th colspan="4"><a href="<?= base_url('member/bengkel') ?>" class="btn btn-block btn-primary btn-flat btn-xs">Tampilkan Semua</a></th>
+                    </tr>
+                  <?php else: ?>
+                    <tr>
+                      <td colspan="8" align="center"><i>Belum ada data tersedia</i></td>
+                    </tr>
+                  <?php endif; ?>
                 </table>
               </div>
             </div>

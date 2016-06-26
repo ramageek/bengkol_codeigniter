@@ -15,7 +15,8 @@ class C_member extends CI_Controller {
 
 			redirect(base_url('member/login'));
 		}
-
+		
+		$data['dataBengkel'] = $this->mb->dataBengkel($this->session->userdata('userid'));
 		$data['mainContent'] = 'vMIndex';
 		$data['titletag'] = 'dasboard member';
 

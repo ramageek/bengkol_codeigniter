@@ -12,14 +12,14 @@
                 <div class="box-body">
                   <div class="col-md-9">
                     <div class="form-group alamat mine">
-                      <div class="col-md-7" style="padding-left:0px;">
+                      <div class="col-md-7" style="padding-left:5px;padding-right:5px;">
                         <label for="nama" class="alamat mine">Nama</label>
                         <?php $data=array('class'=>'form-control','id'=>'nama','name'=>'nama','placeholder'=>'Nama Bengkel','required'=>'');echo form_input($data); ?>
                       </div>
-                      <div class="col-md-5" style="padding-right:0px;">
+                      <div class="col-md-5" style="padding-left:5px;padding-right:5px;">
                         <div class="form-group alamat mine">
                           <label for="kategori" class="alamat mine">Kategori Bengkel</label>
-                          <select name="kategori" id="kategori" class="form-control">
+                          <select name="kategori" id="kategori" class="form-control alamat mine">
                             <option value="1">Bengkel Mobil</option>
                             <option value="2">Bengkel Motor</option>
                           </select>
