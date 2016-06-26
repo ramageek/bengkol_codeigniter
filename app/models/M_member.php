@@ -40,9 +40,4 @@ class M_member extends CI_Model {
 		$this->db->where('id_member',$id);
 		return $this->db->update('member',$input);
 	}
-
-	public function getIdBengkelTerakhir(){
-		$this->db->select('id_bengkel');
-		return $this->db->get('bengkel')->num_rows();
-	}
 }

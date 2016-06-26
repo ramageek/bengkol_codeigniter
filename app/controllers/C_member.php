@@ -110,13 +110,14 @@ class C_member extends CI_Controller {
 			$this->load->view('backend-layouts/vFoot');
 		} else {
 			$input = array(
+				'id_member'=>$this->session->userdata('userid'),
 				'id_kategori'=>$this->input->post('kategori'),
 				'nama'=>$this->input->post('nama'),
 				'provinsi'=>$this->input->post('provinsi'),
 				'kota_kabupaten'=>$this->input->post('kotakab'),
 				'jalan'=>$this->input->post('jalan')
 			);
-			$input['id_bengkel'] = $idBengkel = $this->mm->getIdBengkelTerakhir()+1;
+			$input['id_bengkel'] = $idBengkel = $this->bm->getIdBengkelTerakhir()+1;
 			if (!empty($this->input->post('kecamatan'))) {
 				$input['kecamatan'] = $this->input->post('kecamatan');
 			}
@@ -155,7 +156,15 @@ class C_member extends CI_Controller {
 				}
 			}
 
-			echo print_r($input).'<br/>';
+			if ($this->bm->buatBengkel($input)) {
+				$this->session->set_flashdata('loggedInNotif','Selamat, bengkel telah ditambahkan.');
+
+				redirect(base_url('member/bengkel'));
+			} else {
+				$this->session->set_flashdata('loggedInNotif','Bengkel tidak ditambahkan, silakan ulangi lagi.');
+
+				redirect(base_url('member/bengkel/tambah'));
+			}
 		}
 	}
 
