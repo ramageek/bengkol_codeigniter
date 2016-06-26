@@ -138,7 +138,7 @@ class C_member extends CI_Controller {
 			if (!empty($this->input->post('longitude'))) {
 				$input['longitude'] = $this->input->post('longitude');
 			}
-			if ($_FILES['avatar'] != NULL) {
+			if (!empty($_FILES['avatar'])) {
 				$namaFile = explode('.', basename($_FILES['avatar']['name']));
 				$jmlArr = count($namaFile);
 				$renameFile = strtolower("avatar-bengkel-".$idBengkel.'.'.$namaFile[$jmlArr-1]);
@@ -206,13 +206,13 @@ class C_member extends CI_Controller {
 				'password'=>do_hash($this->input->post('password1'),'sha1')
 			);
 
-			if ($this->input->post('nama') != NULL) {
+			if (!empty($this->input->post('nama'))) {
 				$input['nama'] = $this->input->post('nama');
 			}
-			if ($this->input->post('keterangan') != NULL) {
+			if (!empty($this->input->post('keterangan'))) {
 				$input['keterangan'] = $this->input->post('keterangan');
 			}
-			if ($_FILES['avatar'] != NULL) {
+			if (!empty($_FILES['avatar'])) {
 				$namaFile = explode('.', basename($_FILES['avatar']['name']));
 				$jmlArr = count($namaFile);
 				$renameFile = strtolower("avatar-member-".$this->session->userdata['userid'].'.'.$namaFile[$jmlArr-1]);
@@ -280,10 +280,10 @@ class C_member extends CI_Controller {
 					'email'=>$this->input->post('email'),
 					'password'=>do_hash($this->input->post('password1'),'sha1')
 				);
-				if ($this->input->post('nama') != NULL) {
+				if (!empty($this->input->post('nama'))) {
 					$input['nama'] = $this->input->post('nama');
 				}
-				if ($this->input->post('keterangan') != NULL) {
+				if (!empty($this->input->post('keterangan'))) {
 					$input['keterangan'] = $this->input->post('keterangan');
 				}
 				if ($this->mm->buatMember($input)) {
