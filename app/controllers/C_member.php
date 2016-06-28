@@ -118,7 +118,7 @@ class C_member extends CI_Controller {
 				'kota_kabupaten'=>$this->input->post('kotakab'),
 				'jalan'=>$this->input->post('jalan')
 			);
-			$input['id_bengkel'] = $idBengkel = $this->bm->getIdBengkelTerakhir()+1;
+			$input['id_bengkel'] = $idBengkel = $this->mb->getIdBengkelTerakhir()+1;
 			if (!empty($this->input->post('kecamatan'))) {
 				$input['kecamatan'] = $this->input->post('kecamatan');
 			}
@@ -157,7 +157,7 @@ class C_member extends CI_Controller {
 				}
 			}
 
-			if ($this->bm->buatBengkel($input)) {
+			if ($this->mb->buatBengkel($input)) {
 				$this->session->set_flashdata('loggedInNotif','Selamat, bengkel telah ditambahkan.');
 
 				redirect(base_url('member/bengkel'));
@@ -167,6 +167,10 @@ class C_member extends CI_Controller {
 				redirect(base_url('member/bengkel/tambah'));
 			}
 		}
+	}
+
+	public function hapusBengkel($id){
+		echo 'Ini controller hapus bengkel';
 	}
 
 	public function editMember(){

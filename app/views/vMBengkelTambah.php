@@ -112,7 +112,7 @@
                     </div>
                   </div>
                 </div>
-              <?= form_close() ?>
+              <?= form_close() ?> 
             </div>
           </div>
 
